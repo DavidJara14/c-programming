@@ -1,4 +1,4 @@
-site_name: Programación en C — Curso Intensivo
+site_name: Programación en C
 site_description: Curso intensivo de programación en C, 10 sesiones con teoría, ejercicios y práctica guiada.
 site_author: David Portillo
 site_url: https://davidjara14.github.io/c-programming/
@@ -77,43 +77,48 @@ plugins:
 
 nav:
   - Inicio: index.md
-  - Sesión 1 — Introducción y Variables:
+  - "Lección 0 — Contexto e Historia":
+    - "¿Qué es programar?": leccion-00/que-es-programar.md
+    - "Historia de la computación": leccion-00/historia-computacion.md
+    - "Niveles de lenguaje": leccion-00/niveles-lenguaje.md
+    - "La programación hoy": leccion-00/programacion-hoy.md
+  - "Sesión 1 — Introducción y Variables":
     - Teoría: sesion-01/teoria.md
     - Ejercicios en clase: sesion-01/ejercicios.md
     - Tarea: sesion-01/tarea.md
-  - Sesión 2 — Condicionales:
+  - "Sesión 2 — Condicionales":
     - Teoría: sesion-02/teoria.md
     - Ejercicios en clase: sesion-02/ejercicios.md
     - Tarea: sesion-02/tarea.md
-  - Sesión 3 — Ciclos:
+  - "Sesión 3 — Ciclos":
     - Teoría: sesion-03/teoria.md
     - Ejercicios en clase: sesion-03/ejercicios.md
     - Tarea: sesion-03/tarea.md
-  - Sesión 4 — Arreglos:
+  - "Sesión 4 — Arreglos":
     - Teoría: sesion-04/teoria.md
     - Ejercicios en clase: sesion-04/ejercicios.md
     - Tarea: sesion-04/tarea.md
-  - Sesión 5 — Cadenas:
+  - "Sesión 5 — Cadenas":
     - Teoría: sesion-05/teoria.md
     - Ejercicios en clase: sesion-05/ejercicios.md
     - Tarea: sesion-05/tarea.md
-  - Sesión 6 — Funciones:
+  - "Sesión 6 — Funciones":
     - Teoría: sesion-06/teoria.md
     - Ejercicios en clase: sesion-06/ejercicios.md
     - Tarea: sesion-06/tarea.md
-  - Sesión 7 — Apuntadores I:
+  - "Sesión 7 — Apuntadores I":
     - Teoría: sesion-07/teoria.md
     - Ejercicios en clase: sesion-07/ejercicios.md
     - Tarea: sesion-07/tarea.md
-  - Sesión 8 — Apuntadores II y Memoria Dinámica:
+  - "Sesión 8 — Apuntadores II y Memoria Dinámica":
     - Teoría: sesion-08/teoria.md
     - Ejercicios en clase: sesion-08/ejercicios.md
     - Tarea: sesion-08/tarea.md
-  - Sesión 9 — Estructuras:
+  - "Sesión 9 — Estructuras":
     - Teoría: sesion-09/teoria.md
     - Ejercicios en clase: sesion-09/ejercicios.md
     - Tarea: sesion-09/tarea.md
-  - Sesión 10 — Archivos:
+  - "Sesión 10 — Archivos":
     - Teoría: sesion-10/teoria.md
     - Ejercicios en clase: sesion-10/ejercicios.md
     - Tarea: sesion-10/tarea.md
