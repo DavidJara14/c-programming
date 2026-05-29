@@ -1,11 +1,8 @@
 # Ejercicios en Clase — Sesión 1
 
-!!! info "Dinámica de trabajo"
-    Los ejercicios son progresivos: el primero es completamente guiado, el segundo semiguiado y los siguientes los resuelves tú con el instructor disponible para dudas. Escribe el código en CodeBlocks, compila con `F9` y verifica la salida antes de avanzar.
-
 ---
 
-## Ejercicio 1 — Guiado: Suma de dos constantes
+## Ejercicio 1 — Suma de dos constantes
 
 **Objetivo:** Escribir el primer programa que realiza una operación matemática y muestra el resultado.
 
@@ -19,11 +16,11 @@ Escribe un programa que sume dos valores constantes enteros (A = 21, B = 59) y m
 #include <stdio.h>
 
 int main() {
-    int A, B, C;   // declaramos tres variables enteras
+    int A, B, C;
 
-    A = 21;        // asignamos valores constantes
+    A = 21;
     B = 59;
-    C = A + B;     // realizamos la operación
+    C = A + B;
 
     printf("\n\t%d + %d = %d\n", A, B, C);
 
@@ -40,12 +37,12 @@ int main() {
 ### Preguntas de análisis
 
 1. ¿Qué hace el `\t` dentro del `printf`?
-2. ¿Puedes cambiar A y B por otros valores sin tocar el `printf`? ¿El resultado se actualiza?
-3. ¿Qué pasa si cambias `int` por `float` y usas `%f` en lugar de `%d`?
+2. ¿Puedes cambiar A y B por otros valores sin tocar el `printf`? ¿El resultado se actualiza automáticamente?
+3. ¿Qué sucede si cambias `int` por `float` y usas `%f` en lugar de `%d`?
 
 ---
 
-## Ejercicio 2 — Semiguiado: Suma de dos variables capturadas
+## Ejercicio 2 — Suma de dos variables capturadas
 
 **Objetivo:** Usar `scanf` para capturar datos del usuario y operar con ellos.
 
@@ -71,14 +68,12 @@ int main() {
     c = a + b;
 
     printf("\n\t%.2f + %.2f = __________\n", a, b, c);   // (3) completa el formato
-
-    return 0;
 }
 ```
 
 ### Solución
 
-??? example "Ver solución (intenta primero)"
+??? example "Ver solución"
     ```c
     #include <stdio.h>
 
@@ -100,7 +95,7 @@ int main() {
     }
     ```
 
-### Prueba tu programa con estos casos
+### Casos de prueba
 
 | a | b | Resultado esperado |
 |---|---|--------------------|
@@ -110,36 +105,23 @@ int main() {
 
 ---
 
-## Ejercicio 3 — Independiente: Potencias de un número
+## Ejercicio 3 — Potencias de un número
 
 **Objetivo:** Usar la librería `math.h` y la función `pow`.
 
 ### Enunciado
 
-Escribe un programa que:
-
-1. Pida al usuario un número real `X`
-2. Calcule e imprima su cuadrado (X²) y su cubo (X³)
-3. Use la función `pow` de `math.h`
-4. Muestre los resultados con 2 decimales
-
-### Formato de salida esperado
-
-```
-Ingrese X: 4
-X^2 = 16.00
-X^3 = 64.00
-```
+Escribe un programa que pida al usuario un número real `X`, calcule su cuadrado (X²) y su cubo (X³) usando `pow`, y muestre los resultados con 2 decimales.
 
 ### Pistas
 
 - Necesitas incluir `<math.h>`
 - La función es: `pow(base, exponente)` — ambos parámetros son `double`
-- Usa `double` para la variable X para compatibilidad con `pow`
+- Con `scanf` y `double`, el especificador es `%lf`
 
 ### Solución
 
-??? example "Ver solución (intenta primero)"
+??? example "Ver solución"
     ```c
     #include <stdio.h>
     #include <math.h>
@@ -159,78 +141,271 @@ X^3 = 64.00
     ```
 
 !!! note "Nota sobre `%lf` vs `%f`"
-    Al usar `scanf` con `double`, el especificador correcto es `%lf` (l de *long*). Con `printf`, tanto `%f` como `%lf` funcionan para `double`. En `scanf`, usar `%f` con una variable `double` es un error silencioso — leerá menos bytes de los necesarios.
+    Al usar `scanf` con `double`, el especificador correcto es `%lf`. Con `printf`, tanto `%f` como `%lf` funcionan para `double`. En `scanf`, usar `%f` con una variable `double` produce un error silencioso.
 
 ---
 
-## Ejercicio 4 — Reto: Detecta y corrige los errores
+## Ejercicio 4 — Detecta y corrige los errores
 
-**Objetivo:** Desarrollar el ojo crítico para identificar errores sintácticos y lógicos en C.
+**Objetivo:** Identificar errores sintácticos y lógicos en código C ajeno.
 
 ### Enunciado
 
-El siguiente código tiene **6 errores** (algunos sintácticos, algunos lógicos). Identifícalos, explica por qué son errores y escribe la versión corregida.
+El siguiente código tiene **6 errores**. Identifícalos, clasifícalos como sintácticos o lógicos, y escribe la versión corregida.
 
 ```c
-#include <stdio>          /* error 1 */
+#include <stdio>
 
 int main()
 {
     float altura, area, base;
 
     printf( "\nIntroduzca base:\t" );
-    scanf( "%f", base );              /* error 2 */
+    scanf( "%f", base );
 
-    printf( "\nIntroduzca altura:\t" )   /* error 3 */
+    printf( "\nIntroduzca altura:\t" )
     scanf( "%f", &altura );
 
-    area <- base * altura / 2.0;     /* error 4 */
+    area <- base * altura / 2.0;
 
-    printf( "\nEl area del triangulo es: %d\n", area );  /* error 5 */
+    printf( "\nEl area del triangulo es: %d\n", area );
 
     return 0
-}                                    /* error 6 */
+}
 ```
 
-### Tabla de análisis — llénala antes de ver la solución
+### Solución
 
-| # | Línea | Error | Corrección |
-|---|-------|-------|------------|
-| 1 | `#include <stdio>` | | |
-| 2 | `scanf( "%f", base )` | | |
-| 3 | `printf(...)` sin `;` | | |
-| 4 | `area <- base * ...` | | |
-| 5 | `%d` con variable `float` | | |
-| 6 | `return 0` sin `;` | | |
-
-### Solución corregida
-
-??? example "Ver solución (completa la tabla primero)"
+??? example "Ver solución"
     ```c
-    #include <stdio.h>        // error 1: faltaba la extensión .h
+    #include <stdio.h>
 
     int main() {
         float altura, area, base;
 
         printf("\nIntroduzca base:\t");
-        scanf("%f", &base);   // error 2: faltaba el & antes de base
+        scanf("%f", &base);
 
-        printf("\nIntroduzca altura:\t");  // error 3: faltaba el ; al final
+        printf("\nIntroduzca altura:\t");
         scanf("%f", &altura);
 
-        area = base * altura / 2.0;  // error 4: <- no existe en C, el operador de asignación es =
+        area = base * altura / 2.0;
 
-        printf("\nEl área del triángulo es: %f\n", area);  // error 5: float usa %f, no %d
+        printf("\nEl area del triangulo es: %f\n", area);
 
-        return 0;   // error 6: faltaba el ; 
+        return 0;
     }
     ```
 
-    **Los 6 errores explicados:**
+    | # | Error | Tipo | Corrección |
+    |---|-------|------|------------|
+    | 1 | `<stdio>` | Sintáctico | `<stdio.h>` — extensión `.h` obligatoria |
+    | 2 | `scanf("%f", base)` | Sintáctico | `scanf("%f", &base)` — falta el operador `&` |
+    | 3 | `printf(...)` sin `;` | Sintáctico | Agregar `;` al final |
+    | 4 | `area <- ...` | Sintáctico/lógico | `area = ...` — el operador `<-` no existe en C |
+    | 5 | `%d` con `float` | Lógico | `%f` — `%d` es para `int` |
+    | 6 | `return 0` sin `;` | Sintáctico | `return 0;` |
 
-    1. `<stdio>` → `<stdio.h>`: todas las librerías estándar de C llevan extensión `.h`
-    2. `scanf("%f", base)` → `scanf("%f", &base)`: `scanf` necesita la **dirección de memoria** de la variable, no su valor
-    3. Faltaba `;` al final del `printf`: cada sentencia en C termina con punto y coma
-    4. `<-` no existe en C: el operador de asignación es `=`
-    5. `%d` es para `int`: un `float` debe imprimirse con `%f`
-    6. `return 0` sin `;`: toda sentencia en C termina con punto y coma, incluyendo `return`
+---
+
+## Ejercicio 5 — Función matemática z = x² + y³
+
+**Objetivo:** Combinar captura de datos, operaciones con `pow` y salida formateada.
+
+### Enunciado
+
+Escribe un programa que solicite al usuario los valores de `x` e `y` (números reales), calcule **z = x² + y³** y muestre el resultado con 4 decimales, indicando la operación completa.
+
+### Salida esperada
+
+```
+--- Calculadora: z = x^2 + y^3 ---
+Ingrese x: 3
+Ingrese y: 2
+
+z = 3.00^2 + 2.00^3 = 17.0000
+```
+
+### Casos de prueba
+
+| x | y | z esperada |
+|---|---|-----------|
+| 3 | 2 | 17.0000 |
+| 0 | 5 | 125.0000 |
+| -2 | 3 | 31.0000 |
+| 1.5 | 2.5 | 17.8125 |
+
+### Solución
+
+??? example "Ver solución"
+    ```c
+    #include <stdio.h>
+    #include <math.h>
+
+    int main() {
+        double x, y, z;
+
+        printf("\n\t--- Calculadora: z = x^2 + y^3 ---");
+        printf("\n\tIngrese x: ");
+        scanf("%lf", &x);
+        printf("\tIngrese y: ");
+        scanf("%lf", &y);
+
+        z = pow(x, 2) + pow(y, 3);
+
+        printf("\n\tz = %.2f^2 + %.2f^3 = %.4f\n", x, y, z);
+
+        return 0;
+    }
+    ```
+
+---
+
+## Ejercicio 6 — Volumen de figuras geométricas
+
+**Objetivo:** Calcular múltiples fórmulas en un solo programa usando `#define` para constantes.
+
+### Enunciado
+
+Escribe **un solo programa** que calcule el volumen de las siguientes tres figuras, pidiendo los datos necesarios al usuario:
+
+- **Esfera:** V = (4/3) · π · r³
+- **Cilindro:** V = π · r² · h
+- **Cono:** V = (π · r² · h) / 3
+
+Usa `#define PI 3.14159`. Muestra los resultados con 3 decimales.
+
+### Salida esperada
+
+```
+=== Volumenes geometricos ===
+
+-- Esfera --
+Radio: 5
+Volumen de la esfera: 523.599
+
+-- Cilindro --
+Radio: 3
+Altura: 10
+Volumen del cilindro: 282.743
+
+-- Cono --
+Radio: 4
+Altura: 6
+Volumen del cono: 100.531
+```
+
+### Pistas
+
+- La expresión `4/3` en C con enteros da `1` (división entera). Escríbela como `4.0/3.0`.
+- Declara variables separadas para el radio y la altura de cada figura, o reutilízalas con cuidado.
+
+### Solución
+
+??? example "Ver solución"
+    ```c
+    #include <stdio.h>
+    #include <math.h>
+    #define PI 3.14159
+
+    int main() {
+        double r, h, vol;
+
+        printf("\n\t=== Volumenes geometricos ===\n");
+
+        /* Esfera */
+        printf("\n\t-- Esfera --");
+        printf("\n\tRadio: ");
+        scanf("%lf", &r);
+        vol = (4.0 / 3.0) * PI * pow(r, 3);
+        printf("\tVolumen de la esfera: %.3f\n", vol);
+
+        /* Cilindro */
+        printf("\n\t-- Cilindro --");
+        printf("\n\tRadio: ");
+        scanf("%lf", &r);
+        printf("\tAltura: ");
+        scanf("%lf", &h);
+        vol = PI * pow(r, 2) * h;
+        printf("\tVolumen del cilindro: %.3f\n", vol);
+
+        /* Cono */
+        printf("\n\t-- Cono --");
+        printf("\n\tRadio: ");
+        scanf("%lf", &r);
+        printf("\tAltura: ");
+        scanf("%lf", &h);
+        vol = (PI * pow(r, 2) * h) / 3.0;
+        printf("\tVolumen del cono: %.3f\n", vol);
+
+        return 0;
+    }
+    ```
+
+---
+
+## Ejercicio 7 — Corrección de errores avanzada (8 errores)
+
+**Objetivo:** Detectar errores en un programa con mayor densidad de fallos, incluyendo errores en directivas de preprocesador.
+
+### Enunciado
+
+El siguiente programa intenta calcular el área de un círculo con **A = π · r²**. Contiene **8 errores**. Identifícalos, corrígelos y valida que el programa compile y produzca resultados correctos.
+
+```c
+#include <stdio.h>
+#include <math>
+#define PI  
+
+int main();
+{
+float radio area;
+
+printf("\nRadio=\t");
+scanf("%d", &radio);
+
+area=PI*po (radio, 2);
+
+printf("\nEl Area es %\n", area);
+
+return 0
+}
+```
+
+### Pistas
+
+Los errores abarcan: directiva `#include` incompleta, `#define` sin valor, declaración de `main` con `;` sobrante, variables sin separador, especificador de formato incorrecto en `scanf`, nombre de función mal escrito, formato incompleto en `printf`, y `return` sin `;`.
+
+### Solución
+
+??? example "Ver solución"
+    ```c
+    #include <stdio.h>
+    #include <math.h>          /* 1: faltaba .h */
+    #define PI 3.14159         /* 2: faltaba el valor de PI */
+
+    int main()                 /* 3: sobraba el ; después de main() */
+    {
+        float radio, area;     /* 4: faltaba la coma entre variables */
+
+        printf("\nRadio=\t");
+        scanf("%f", &radio);   /* 5: %d incorrecto para float, debe ser %f */
+
+        area = PI * pow(radio, 2);  /* 6: "po " → pow (nombre y espacio incorrectos) */
+
+        printf("\nEl Area es %f\n", area);  /* 7: "%" incompleto, debe ser %f */
+
+        return 0;              /* 8: faltaba ; */
+    }
+    ```
+
+    | # | Elemento con error | Corrección |
+    |---|-------------------|------------|
+    | 1 | `#include <math>` | `#include <math.h>` |
+    | 2 | `#define PI` (sin valor) | `#define PI 3.14159` |
+    | 3 | `int main();` | `int main()` — el `;` convierte la declaración en un prototipo |
+    | 4 | `float radio area;` | `float radio, area;` — la `,` separa declaraciones |
+    | 5 | `scanf("%d", &radio)` | `scanf("%f", &radio)` — `radio` es `float` |
+    | 6 | `po (radio, 2)` | `pow(radio, 2)` — nombre correcto sin espacio |
+    | 7 | `printf("...%\n", area)` | `printf("...%f\n", area)` — especificador incompleto |
+    | 8 | `return 0` | `return 0;` |
