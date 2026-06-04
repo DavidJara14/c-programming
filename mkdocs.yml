@@ -3,48 +3,60 @@ site_description: Curso intensivo de programación en C, 10 sesiones con teoría
 site_author: David Portillo
 site_url: https://davidjara14.github.io/c-programming/
 
+copyright: Copyright &copy; 2026 David Portillo &middot; Material educativo
+
 theme:
   name: material
   language: es
+  logo: assets/logo.svg
+  favicon: assets/favicon.svg
   palette:
     - scheme: default
-      primary: indigo
-      accent: blue
+      primary: custom
+      accent: custom
       toggle:
-        icon: material/brightness-7
+        icon: material/weather-sunny
         name: Cambiar a modo oscuro
     - scheme: slate
-      primary: indigo
-      accent: blue
+      primary: custom
+      accent: custom
       toggle:
-        icon: material/brightness-4
+        icon: material/weather-night
         name: Cambiar a modo claro
   font:
-    text: Roboto
-    code: Roboto Mono
+    text: Inter
+    code: JetBrains Mono
   icon:
     repo: fontawesome/brands/github
   features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
     - navigation.tabs
     - navigation.tabs.sticky
-    - navigation.sections
-    - navigation.expand
     - navigation.top
     - navigation.footer
     - search.suggest
     - search.highlight
+    - search.share
+    - toc.follow
     - content.code.copy
     - content.code.annotate
-    - toc.follow
+    - content.tabs.link
+    - content.tooltips
 
 repo_url: https://github.com/DavidJara14/c-programming
 repo_name: DavidJara14/c-programming
 edit_uri: ""
 
+extra_css:
+  - assets/stylesheets/extra.css
+
 extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/DavidJara14
+      name: GitHub
 
 markdown_extensions:
   - admonition
@@ -63,13 +75,16 @@ markdown_extensions:
       alternate_style: true
   - pymdownx.tasklist:
       custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - attr_list
   - md_in_html
   - tables
   - footnotes
   - toc:
       permalink: true
-      title: Contenido
+      title: En esta página
 
 plugins:
   - search:
@@ -77,48 +92,49 @@ plugins:
 
 nav:
   - Inicio: index.md
-  - "Lección 0 — Contexto e Historia":
+  - "Lección 0":
     - "¿Qué es programar?": leccion-00/que-es-programar.md
     - "Historia de la computación": leccion-00/historia-computacion.md
     - "Niveles de lenguaje": leccion-00/niveles-lenguaje.md
     - "La programación hoy": leccion-00/programacion-hoy.md
-  - "Sesión 1 — Introducción y Variables":
-    - Teoría: sesion-01/teoria.md
-    - Ejercicios en clase: sesion-01/ejercicios.md
-    - Tarea: sesion-01/tarea.md
-  - "Sesión 2 — Condicionales":
-    - Teoría: sesion-02/teoria.md
-    - Ejercicios en clase: sesion-02/ejercicios.md
-    - Tarea: sesion-02/tarea.md
-  - "Sesión 3 — Ciclos":
-    - Teoría: sesion-03/teoria.md
-    - Ejercicios en clase: sesion-03/ejercicios.md
-    - Tarea: sesion-03/tarea.md
-  - "Sesión 4 — Arreglos":
-    - Teoría: sesion-04/teoria.md
-    - Ejercicios en clase: sesion-04/ejercicios.md
-    - Tarea: sesion-04/tarea.md
-  - "Sesión 5 — Cadenas":
-    - Teoría: sesion-05/teoria.md
-    - Ejercicios en clase: sesion-05/ejercicios.md
-    - Tarea: sesion-05/tarea.md
-  - "Sesión 6 — Funciones":
-    - Teoría: sesion-06/teoria.md
-    - Ejercicios en clase: sesion-06/ejercicios.md
-    - Tarea: sesion-06/tarea.md
-  - "Sesión 7 — Apuntadores I":
-    - Teoría: sesion-07/teoria.md
-    - Ejercicios en clase: sesion-07/ejercicios.md
-    - Tarea: sesion-07/tarea.md
-  - "Sesión 8 — Apuntadores II y Memoria Dinámica":
-    - Teoría: sesion-08/teoria.md
-    - Ejercicios en clase: sesion-08/ejercicios.md
-    - Tarea: sesion-08/tarea.md
-  - "Sesión 9 — Estructuras":
-    - Teoría: sesion-09/teoria.md
-    - Ejercicios en clase: sesion-09/ejercicios.md
-    - Tarea: sesion-09/tarea.md
-  - "Sesión 10 — Archivos":
-    - Teoría: sesion-10/teoria.md
-    - Ejercicios en clase: sesion-10/ejercicios.md
-    - Tarea: sesion-10/tarea.md
+  - "Sesiones":
+    - "Sesión 1 — Introducción y Variables":
+      - Teoría: sesion-01/teoria.md
+      - Ejercicios en clase: sesion-01/ejercicios.md
+      - Tarea: sesion-01/tarea.md
+    - "Sesión 2 — Condicionales":
+      - Teoría: sesion-02/teoria.md
+      - Ejercicios en clase: sesion-02/ejercicios.md
+      - Tarea: sesion-02/tarea.md
+    - "Sesión 3 — Ciclos":
+      - Teoría: sesion-03/teoria.md
+      - Ejercicios en clase: sesion-03/ejercicios.md
+      - Tarea: sesion-03/tarea.md
+    - "Sesión 4 — Arreglos":
+      - Teoría: sesion-04/teoria.md
+      - Ejercicios en clase: sesion-04/ejercicios.md
+      - Tarea: sesion-04/tarea.md
+    - "Sesión 5 — Cadenas":
+      - Teoría: sesion-05/teoria.md
+      - Ejercicios en clase: sesion-05/ejercicios.md
+      - Tarea: sesion-05/tarea.md
+    - "Sesión 6 — Funciones":
+      - Teoría: sesion-06/teoria.md
+      - Ejercicios en clase: sesion-06/ejercicios.md
+      - Tarea: sesion-06/tarea.md
+    - "Sesión 7 — Apuntadores I":
+      - Teoría: sesion-07/teoria.md
+      - Ejercicios en clase: sesion-07/ejercicios.md
+      - Tarea: sesion-07/tarea.md
+    - "Sesión 8 — Apuntadores II y Memoria Dinámica":
+      - Teoría: sesion-08/teoria.md
+      - Ejercicios en clase: sesion-08/ejercicios.md
+      - Tarea: sesion-08/tarea.md
+    - "Sesión 9 — Estructuras":
+      - Teoría: sesion-09/teoria.md
+      - Ejercicios en clase: sesion-09/ejercicios.md
+      - Tarea: sesion-09/tarea.md
+    - "Sesión 10 — Archivos":
+      - Teoría: sesion-10/teoria.md
+      - Ejercicios en clase: sesion-10/ejercicios.md
+      - Tarea: sesion-10/tarea.md

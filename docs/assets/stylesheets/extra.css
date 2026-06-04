@@ -1,0 +1,468 @@
+/* ===========================================================================
+   Programación en C — Tema personalizado para Material for MkDocs
+   Autor: David Portillo
+   =========================================================================== */
+
+/* ---------------------------------------------------------------------------
+   1. PALETA DE COLOR — MODO CLARO
+   --------------------------------------------------------------------------- */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color:            #0d3b66;
+  --md-primary-fg-color--light:     #1d5a8f;
+  --md-primary-fg-color--dark:      #082742;
+  --md-primary-bg-color:            #ffffff;
+  --md-primary-bg-color--light:     #ffffffcc;
+
+  --md-accent-fg-color:             #0091c2;
+  --md-accent-fg-color--transparent:#0091c21a;
+
+  --md-typeset-a-color:             #155a96;
+
+  --md-default-bg-color:            #f7f9fc;
+
+  /* Variables propias */
+  --surface:                #ffffff;
+  --surface-2:              #f0f4f9;
+  --surface-border:         #e3e9f1;
+  --surface-shadow:         0 1px 2px rgba(13, 59, 102, .05), 0 4px 14px rgba(13, 59, 102, .06);
+  --surface-shadow-hover:   0 6px 18px rgba(13, 59, 102, .12), 0 16px 40px rgba(13, 59, 102, .10);
+  --hero-grad-1:            #0d3b66;
+  --hero-grad-2:            #1d6fa5;
+  --hero-grad-3:            #0091c2;
+  --hero-text:              #eaf4ff;
+  --callout-bg:             linear-gradient(135deg, #eef5fb 0%, #f3f8fc 100%);
+  --callout-border:         #1d6fa5;
+  --callout-icon:           #0d3b66;
+}
+
+/* ---------------------------------------------------------------------------
+   2. PALETA DE COLOR — MODO OSCURO
+   --------------------------------------------------------------------------- */
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color:            #0b2236;
+  --md-primary-fg-color--light:     #143a57;
+  --md-primary-fg-color--dark:      #061525;
+  --md-primary-bg-color:            #e9f1f8;
+
+  --md-accent-fg-color:             #3ec1ec;
+  --md-accent-fg-color--transparent:#3ec1ec1a;
+
+  --md-typeset-a-color:             #5cb8ea;
+
+  --md-default-bg-color:            #0e1924;
+  --md-default-fg-color:            #d3dde7;
+  --md-default-fg-color--light:     #aebccb;
+  --md-code-bg-color:               #14202d;
+
+  /* Variables propias */
+  --surface:                #15212e;
+  --surface-2:              #1a2937;
+  --surface-border:         #25384a;
+  --surface-shadow:         0 1px 2px rgba(0, 0, 0, .30), 0 4px 14px rgba(0, 0, 0, .35);
+  --surface-shadow-hover:   0 6px 18px rgba(0, 0, 0, .45), 0 16px 40px rgba(0, 0, 0, .45);
+  --hero-grad-1:            #0a2b4a;
+  --hero-grad-2:            #0f4068;
+  --hero-grad-3:            #135d86;
+  --hero-text:             #dceefb;
+  --callout-bg:             linear-gradient(135deg, #16293a 0%, #14222f 100%);
+  --callout-border:         #3ec1ec;
+  --callout-icon:           #5cb8ea;
+}
+
+/* ---------------------------------------------------------------------------
+   3. TIPOGRAFÍA BASE
+   --------------------------------------------------------------------------- */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.md-typeset {
+  font-size: .76rem;
+  line-height: 1.72;
+}
+
+.md-typeset h1 {
+  font-weight: 800;
+  letter-spacing: -.02em;
+  color: var(--md-primary-fg-color);
+}
+
+[data-md-color-scheme="slate"] .md-typeset h1 {
+  color: var(--md-primary-bg-color);
+}
+
+.md-typeset h2 {
+  font-weight: 750;
+  letter-spacing: -.01em;
+  margin-top: 2.2em;
+  padding-bottom: .3em;
+  border-bottom: 2px solid var(--surface-border);
+}
+
+.md-typeset h3 {
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------------------------
+   4. ENCABEZADO Y NAVEGACIÓN
+   --------------------------------------------------------------------------- */
+.md-header {
+  box-shadow: 0 2px 12px rgba(8, 39, 66, .18);
+  backdrop-filter: saturate(140%);
+}
+
+.md-tabs {
+  background: linear-gradient(90deg, var(--md-primary-fg-color--dark), var(--md-primary-fg-color));
+}
+
+.md-tabs__link {
+  font-weight: 600;
+  opacity: .85;
+  transition: opacity .2s ease;
+}
+
+.md-tabs__link:hover,
+.md-tabs__link--active {
+  opacity: 1;
+}
+
+/* Resaltado del elemento activo en la barra lateral */
+.md-nav__link--active {
+  font-weight: 700;
+}
+
+.md-nav__item .md-nav__link--active {
+  border-left: 2px solid var(--md-accent-fg-color);
+  padding-left: .6rem;
+  margin-left: -.62rem;
+}
+
+/* ---------------------------------------------------------------------------
+   5. HERO (página de inicio)
+   --------------------------------------------------------------------------- */
+.hero {
+  position: relative;
+  margin: -1.2rem -.8rem 2.5rem;
+  padding: 4rem 2rem 4.2rem;
+  border-radius: 0 0 28px 28px;
+  background:
+    radial-gradient(900px 380px at 88% -10%, var(--hero-grad-3) 0%, transparent 55%),
+    linear-gradient(135deg, var(--hero-grad-1) 0%, var(--hero-grad-2) 100%);
+  color: var(--hero-text);
+  overflow: hidden;
+  box-shadow: var(--surface-shadow);
+}
+
+/* Patrón sutil de fondo */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, .04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, .04) 1px, transparent 1px);
+  background-size: 34px 34px;
+  mask-image: linear-gradient(180deg, rgba(0,0,0,.9), transparent 80%);
+  pointer-events: none;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero__eyebrow {
+  display: inline-block;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: .35em .9em;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .12);
+  border: 1px solid rgba(255, 255, 255, .22);
+  color: #ffffff;
+  margin-bottom: 1.1rem;
+}
+
+.md-typeset .hero h1 {
+  color: #ffffff;
+  font-size: 2.9rem;
+  line-height: 1.05;
+  margin: 0 0 .6rem;
+  font-weight: 850;
+}
+
+.hero h1 .accent {
+  background: linear-gradient(120deg, #8fe3ff, #ffffff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero__subtitle,
+.hero p {
+  font-size: .95rem;
+  line-height: 1.65;
+  max-width: 46ch;
+  color: var(--hero-text);
+  opacity: .92;
+}
+
+/* Botones dentro del hero */
+.hero .md-button {
+  margin-top: 1.4rem;
+  margin-right: .6rem;
+  border-radius: 10px;
+  font-weight: 700;
+  border-width: 2px;
+  transition: transform .15s ease, box-shadow .2s ease;
+}
+
+.hero .md-button--primary {
+  background: #ffffff;
+  color: var(--md-primary-fg-color);
+  border-color: #ffffff;
+}
+
+.hero .md-button--primary:hover {
+  background: #eaf4ff;
+  border-color: #eaf4ff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .25);
+}
+
+.hero .md-button:not(.md-button--primary) {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, .55);
+}
+
+.hero .md-button:not(.md-button--primary):hover {
+  background: rgba(255, 255, 255, .12);
+  border-color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* ---------------------------------------------------------------------------
+   6. GRID CARDS (tarjetas del temario)
+   --------------------------------------------------------------------------- */
+.md-typeset .grid.cards > ul > li,
+.md-typeset .grid > .card {
+  border: 1px solid var(--surface-border);
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: var(--surface-shadow);
+  padding: 1.1rem 1.2rem;
+  transition: transform .18s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.md-typeset .grid.cards > ul > li:hover,
+.md-typeset .grid > .card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--surface-shadow-hover);
+  border-color: var(--md-accent-fg-color);
+}
+
+.md-typeset .grid.cards > ul > li > hr {
+  margin: .7rem 0;
+  border-color: var(--surface-border);
+}
+
+.md-typeset .grid.cards .twemoji.lg svg,
+.md-typeset .grid.cards :is(.lg) svg {
+  height: 1.8rem;
+  width: 1.8rem;
+  fill: var(--md-accent-fg-color);
+}
+
+.md-typeset .grid.cards a:not(.md-button) {
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------------------------------
+   7. BLOQUES DE CÓDIGO
+   --------------------------------------------------------------------------- */
+.md-typeset pre > code {
+  border-radius: 12px;
+}
+
+.md-typeset .highlight {
+  border-radius: 12px;
+  box-shadow: var(--surface-shadow);
+}
+
+.md-typeset .highlight > pre {
+  border-radius: 12px;
+}
+
+.highlight span.filename {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  font-weight: 600;
+}
+
+/* Código en línea: estilo "pill" */
+.md-typeset code:not(pre code) {
+  padding: .12em .42em;
+  border-radius: 6px;
+  font-size: .85em;
+  background: var(--md-code-bg-color);
+  border: 1px solid var(--surface-border);
+}
+
+/* ---------------------------------------------------------------------------
+   8. TABLAS
+   --------------------------------------------------------------------------- */
+.md-typeset table:not([class]) {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--surface-border);
+  box-shadow: var(--surface-shadow);
+  font-size: .72rem;
+}
+
+.md-typeset table:not([class]) th {
+  background: var(--md-primary-fg-color);
+  color: #ffffff;
+  font-weight: 650;
+  letter-spacing: .01em;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
+  background: var(--md-primary-fg-color--light);
+}
+
+.md-typeset table:not([class]) tr:hover {
+  background: var(--surface-2);
+}
+
+.md-typeset table:not([class]) td,
+.md-typeset table:not([class]) th {
+  border: none;
+  border-bottom: 1px solid var(--surface-border);
+}
+
+/* ---------------------------------------------------------------------------
+   9. ADMONICIONES
+   --------------------------------------------------------------------------- */
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 12px;
+  border-width: 0;
+  border-left-width: 4px;
+  box-shadow: var(--surface-shadow);
+  font-size: .74rem;
+}
+
+.md-typeset .admonition-title,
+.md-typeset summary {
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------------------------
+   10. CITAS HISTÓRICAS (blockquote) — estilo "callout"
+   --------------------------------------------------------------------------- */
+.md-typeset blockquote {
+  position: relative;
+  border: 1px solid var(--surface-border);
+  border-left: 4px solid var(--callout-border);
+  border-radius: 12px;
+  background: var(--callout-bg);
+  padding: 1rem 1.2rem 1rem 3rem;
+  color: var(--md-default-fg-color);
+  box-shadow: var(--surface-shadow);
+}
+
+.md-typeset blockquote::before {
+  content: "“";
+  position: absolute;
+  left: .7rem;
+  top: .1rem;
+  font-size: 2.6rem;
+  line-height: 1;
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--callout-icon);
+  opacity: .55;
+}
+
+.md-typeset blockquote > p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   11. BOTONES GENERALES
+   --------------------------------------------------------------------------- */
+.md-typeset .md-button {
+  border-radius: 10px;
+  font-weight: 600;
+  transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.md-typeset .md-button--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--surface-shadow-hover);
+}
+
+/* ---------------------------------------------------------------------------
+   12. PIE DE PÁGINA
+   --------------------------------------------------------------------------- */
+.md-footer-meta {
+  background: var(--md-primary-fg-color--dark);
+}
+
+/* ---------------------------------------------------------------------------
+   13. BARRA DE DESPLAZAMIENTO
+   --------------------------------------------------------------------------- */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--md-primary-fg-color--light) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--md-primary-fg-color--light);
+  border-radius: 999px;
+  border: 2px solid var(--md-default-bg-color);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--md-accent-fg-color);
+}
+
+/* ---------------------------------------------------------------------------
+   14. DETALLES VARIOS
+   --------------------------------------------------------------------------- */
+.md-typeset hr {
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.md-typeset kbd {
+  border-radius: 6px;
+  box-shadow: 0 2px 0 var(--surface-border);
+}
+
+/* Marca de selección de texto */
+::selection {
+  background: var(--md-accent-fg-color);
+  color: #ffffff;
+}
+
+/* Enlaces de la tabla de contenido al pasar el cursor */
+.md-nav__link:hover {
+  color: var(--md-accent-fg-color);
+}
+
+/* Animación suave de aparición del contenido principal */
+.md-content__inner {
+  animation: fadeInUp .35s ease both;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
