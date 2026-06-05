@@ -47,7 +47,7 @@ Combinan múltiples condiciones.
 | Operador | Nombre | Significado | Ejemplo |
 |----------|--------|-------------|---------|
 | `&&` | AND | Verdadero si **ambas** condiciones son verdaderas | `(x > 0 && x < 100)` |
-| `\|\|` | OR | Verdadero si **al menos una** condición es verdadera | `(x == 0 \|\| x == 1)` |
+| <code>&#124;&#124;</code> | OR | Verdadero si **al menos una** condición es verdadera | <code>(x == 0 &#124;&#124; x == 1)</code> |
 | `!` | NOT | Invierte el valor lógico | `!(x > 5)` equivale a `x <= 5` |
 
 ### Tabla de verdad

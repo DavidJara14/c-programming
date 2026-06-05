@@ -1,7 +1,10 @@
 # Tarea — Sesión 2
 
 !!! note "Instrucciones de entrega"
-    Un archivo `.c` por ejercicio. Prueba con todos los casos indicados. Las soluciones se publicarán antes de la Sesión 3.
+    Un archivo `.c` por ejercicio. Prueba con todos los casos indicados.
+
+!!! success "Soluciones disponibles"
+    Cada ejercicio incluye su solución en un bloque desplegable. Intenta resolverlo por tu cuenta **antes** de abrirla.
 
 ---
 
@@ -52,6 +55,38 @@ Error: la calificacion debe estar entre 0 y 100.
 - Valida el rango primero, antes de clasificar.
 - Con `if-else if`, empieza por el rango más alto y baja. No necesitas condiciones dobles como `x >= 80 && x <= 89` si estructuras correctamente la cadena: al llegar a `else if (cal >= 80)`, ya sabes que `cal < 90` por el `if` anterior.
 
+### Solución
+
+??? example "Ver solución"
+    ```c
+    #include <stdio.h>
+
+    int main() {
+        int cal;
+
+        printf("Calificacion: ");
+        scanf("%d", &cal);
+
+        if (cal < 0 || cal > 100) {
+            printf("Error: la calificacion debe estar entre 0 y 100.\n");
+        } else if (cal >= 90) {
+            printf("Letra: A\n");
+        } else if (cal >= 80) {
+            printf("Letra: B\n");
+        } else if (cal >= 70) {
+            printf("Letra: C\n");
+        } else if (cal >= 60) {
+            printf("Letra: D\n");
+        } else {
+            printf("Letra: F\n");
+        }
+
+        return 0;
+    }
+    ```
+
+    **Punto clave:** la cadena `if-else if` se evalúa de arriba hacia abajo. Cuando se llega a `else if (cal >= 80)`, es porque la condición `cal >= 90` ya fue falsa, así que implícitamente sabemos que `cal` está entre 80 y 89. Por eso no hace falta escribir `cal >= 80 && cal <= 89`.
+
 ---
 
 ## Ejercicio T2 — Calculadora de IMC con diagnóstico
@@ -98,6 +133,48 @@ Clasificacion: Peso normal
 - La estatura al cuadrado se puede calcular como `estatura * estatura` o con `pow(estatura, 2)`.
 - Verifica estatura antes de dividir — estatura igual a cero produce división indefinida.
 
+### Solución
+
+??? example "Ver solución"
+    ```c
+    #include <stdio.h>
+
+    int main() {
+        float peso, estatura, imc;
+
+        printf("Peso (kg): ");
+        scanf("%f", &peso);
+        printf("Estatura (m): ");
+        scanf("%f", &estatura);
+
+        if (peso <= 0 || estatura <= 0) {
+            printf("Error: el peso y la estatura deben ser positivos.\n");
+        } else {
+            imc = peso / (estatura * estatura);
+            printf("\nIMC: %.2f\n", imc);
+
+            printf("Clasificacion: ");
+            if (imc < 18.5) {
+                printf("Bajo peso\n");
+            } else if (imc < 25.0) {
+                printf("Peso normal\n");
+            } else if (imc < 30.0) {
+                printf("Sobrepeso\n");
+            } else if (imc < 35.0) {
+                printf("Obesidad grado I\n");
+            } else if (imc < 40.0) {
+                printf("Obesidad grado II\n");
+            } else {
+                printf("Obesidad grado III\n");
+            }
+        }
+
+        return 0;
+    }
+    ```
+
+    **Punto clave:** se valida `estatura > 0` antes de dividir para evitar una división entre cero. La clasificación usa el mismo truco de la cadena `if-else if`: cada `else if` solo necesita el límite superior porque el inferior ya quedó garantizado por las condiciones previas.
+
 ---
 
 ## Ejercicio T3 — Tarifa eléctrica escalonada
@@ -137,13 +214,75 @@ Total a pagar: $170.015
 | 75 | $59.475 |
 | 140 | $121.615 |
 | 200 | $194.215 |
-| 300 | $514.815 |
+| 300 | $509.715 |
 
 ### Pistas
 
 - El cálculo acumulativo es la parte difícil. Piensa escalón por escalón: si el consumo es mayor que el límite del escalón, cobra el escalón completo y pasa al siguiente. Si es menor o igual, solo cobra lo que queda y termina.
 - Define variables separadas para cada tramo o usa una variable acumuladora para el total.
 - Resta el consumo ya facturado antes de calcular el siguiente tramo. Por ejemplo, si el consumo es 180: factura 75 al primer precio, luego los siguientes 65 al segundo precio, y los restantes 40 al tercer precio.
+
+### Solución
+
+??? example "Ver solución"
+    ```c
+    #include <stdio.h>
+
+    int main() {
+        int consumo, restante, tramo;
+        float total = 0;
+
+        printf("Consumo bimestral (kWh): ");
+        scanf("%d", &consumo);
+        restante = consumo;
+
+        printf("\nDesglose:\n");
+
+        /* Tramo 1: hasta 75 kWh a $0.793 */
+        tramo = (restante > 75) ? 75 : restante;
+        if (tramo > 0) {
+            printf("  %d kWh x $0.793 = $%.3f\n", tramo, tramo * 0.793);
+            total += tramo * 0.793;
+            restante -= tramo;
+        }
+
+        /* Tramo 2: siguientes 65 kWh a $0.956 */
+        tramo = (restante > 65) ? 65 : restante;
+        if (tramo > 0) {
+            printf("  %d kWh x $0.956 = $%.3f\n", tramo, tramo * 0.956);
+            total += tramo * 0.956;
+            restante -= tramo;
+        }
+
+        /* Tramo 3: siguientes 60 kWh a $1.210 */
+        tramo = (restante > 60) ? 60 : restante;
+        if (tramo > 0) {
+            printf("  %d kWh x $1.210 = $%.3f\n", tramo, tramo * 1.210);
+            total += tramo * 1.210;
+            restante -= tramo;
+        }
+
+        /* Tramo 4: siguientes 50 kWh a $2.890 */
+        tramo = (restante > 50) ? 50 : restante;
+        if (tramo > 0) {
+            printf("  %d kWh x $2.890 = $%.3f\n", tramo, tramo * 2.890);
+            total += tramo * 2.890;
+            restante -= tramo;
+        }
+
+        /* Tramo 5: el resto a $3.420 */
+        if (restante > 0) {
+            printf("  %d kWh x $3.420 = $%.3f\n", restante, restante * 3.420);
+            total += restante * 3.420;
+        }
+
+        printf("\nTotal a pagar: $%.3f\n", total);
+
+        return 0;
+    }
+    ```
+
+    **Punto clave:** el operador ternario `(restante > limite) ? limite : restante` decide cuánto facturar en cada tramo: el tramo completo si todavía queda mucho consumo, o solo lo que resta si el consumo se agota en ese escalón. Tras cobrar cada tramo, se descuenta de `restante`. Los condicionales `if (tramo > 0)` evitan imprimir tramos vacíos.
 
 ---
 
@@ -200,3 +339,73 @@ El 15/9/2025 es lunes.
 - Para Zeller, si el mes es enero o febrero, ajusta: `mes += 12` y `anio -= 1` antes de calcular `K` y `J`.
 - El operador `%` en C puede devolver valores negativos con operandos negativos. Para asegurar un resultado positivo: `h = ((resultado % 7) + 7) % 7`.
 - Usa un `switch` o una cadena `if-else if` para convertir el valor numérico de `h` al nombre del día.
+
+### Solución
+
+??? example "Ver solución"
+    ```c
+    #include <stdio.h>
+
+    int main() {
+        int dia, mes, anio;
+        int q, m, K, J, h;
+        int bisiesto;
+
+        printf("Ingrese dia: ");
+        scanf("%d", &dia);
+        printf("Ingrese mes: ");
+        scanf("%d", &mes);
+        printf("Ingrese anio: ");
+        scanf("%d", &anio);
+
+        /* --- 1. Año bisiesto (se usa el año ORIGINAL) --- */
+        if (anio % 400 == 0) {
+            bisiesto = 1;
+        } else if (anio % 100 == 0) {
+            bisiesto = 0;
+        } else if (anio % 4 == 0) {
+            bisiesto = 1;
+        } else {
+            bisiesto = 0;
+        }
+
+        /* --- 2. Congruencia de Zeller --- */
+        q = dia;
+        m = mes;
+        int y = anio;             /* copia para ajustar enero/febrero */
+        if (m == 1 || m == 2) {
+            m += 12;
+            y -= 1;
+        }
+        K = y % 100;
+        J = y / 100;
+        h = (q + (13 * (m + 1)) / 5 + K + K / 4 + J / 4 - 2 * J) % 7;
+        h = ((h % 7) + 7) % 7;    /* normaliza a un valor entre 0 y 6 */
+
+        /* --- Resultados --- */
+        if (bisiesto) {
+            printf("\nEl anio %d SI es bisiesto.\n", anio);
+        } else {
+            printf("\nEl anio %d NO es bisiesto.\n", anio);
+        }
+
+        printf("El %d/%d/%d es ", dia, mes, anio);
+        switch (h) {
+            case 0: printf("sabado.\n");    break;
+            case 1: printf("domingo.\n");   break;
+            case 2: printf("lunes.\n");     break;
+            case 3: printf("martes.\n");    break;
+            case 4: printf("miercoles.\n"); break;
+            case 5: printf("jueves.\n");    break;
+            case 6: printf("viernes.\n");   break;
+        }
+
+        return 0;
+    }
+    ```
+
+    **Puntos clave:**
+
+    1. El año bisiesto se evalúa en orden: primero `% 400`, luego `% 100`, luego `% 4`. Este orden es esencial porque el año 2000 (divisible entre 400) es bisiesto, pero 1900 (divisible entre 100 pero no entre 400) no lo es.
+    2. En Zeller, enero y febrero se tratan como los meses 13 y 14 del **año anterior**. Por eso se usa una copia `y` del año: el cálculo de bisiesto debe usar el año original, no el ajustado.
+    3. La división `(13 * (m + 1)) / 5` es entera (floor) porque ambos operandos son `int`, que es justo lo que pide la fórmula.

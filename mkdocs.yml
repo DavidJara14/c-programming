@@ -52,6 +52,9 @@ edit_uri: ""
 extra_css:
   - assets/stylesheets/extra.css
 
+extra_javascript:
+  - assets/javascripts/interactivo.js
+
 extra:
   social:
     - icon: fontawesome/brands/github
@@ -104,6 +107,7 @@ nav:
       - Tarea: sesion-01/tarea.md
     - "Sesión 2 — Condicionales":
       - Teoría: sesion-02/teoria.md
+      - Refuerzo interactivo: sesion-02/refuerzo-interactivo.md
       - Ejercicios en clase: sesion-02/ejercicios.md
       - Tarea: sesion-02/tarea.md
     - "Sesión 3 — Ciclos":
