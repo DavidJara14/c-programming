@@ -105,40 +105,53 @@ nav:
       - Teoría: sesion-01/teoria.md
       - Ejercicios en clase: sesion-01/ejercicios.md
       - Tarea: sesion-01/tarea.md
+      - Examen: sesion-01/examen.md
     - "Sesión 2 — Condicionales":
       - Teoría: sesion-02/teoria.md
       - Refuerzo interactivo: sesion-02/refuerzo-interactivo.md
       - Ejercicios en clase: sesion-02/ejercicios.md
       - Tarea: sesion-02/tarea.md
+      - Examen: sesion-02/examen.md
     - "Sesión 3 — Ciclos":
       - Teoría: sesion-03/teoria.md
       - Ejercicios en clase: sesion-03/ejercicios.md
       - Tarea: sesion-03/tarea.md
+      - Examen: sesion-03/examen.md
     - "Sesión 4 — Arreglos":
       - Teoría: sesion-04/teoria.md
       - Ejercicios en clase: sesion-04/ejercicios.md
       - Tarea: sesion-04/tarea.md
+      - Examen: sesion-04/examen.md
     - "Sesión 5 — Cadenas":
       - Teoría: sesion-05/teoria.md
       - Ejercicios en clase: sesion-05/ejercicios.md
       - Tarea: sesion-05/tarea.md
+      - Examen: sesion-05/examen.md
     - "Sesión 6 — Funciones":
       - Teoría: sesion-06/teoria.md
       - Ejercicios en clase: sesion-06/ejercicios.md
       - Tarea: sesion-06/tarea.md
+      - Examen: sesion-06/examen.md
     - "Sesión 7 — Apuntadores I":
       - Teoría: sesion-07/teoria.md
       - Ejercicios en clase: sesion-07/ejercicios.md
       - Tarea: sesion-07/tarea.md
+      - Examen: sesion-07/examen.md
     - "Sesión 8 — Apuntadores II y Memoria Dinámica":
       - Teoría: sesion-08/teoria.md
       - Ejercicios en clase: sesion-08/ejercicios.md
       - Tarea: sesion-08/tarea.md
+      - Examen: sesion-08/examen.md
     - "Sesión 9 — Estructuras":
       - Teoría: sesion-09/teoria.md
       - Ejercicios en clase: sesion-09/ejercicios.md
       - Tarea: sesion-09/tarea.md
+      - Examen: sesion-09/examen.md
     - "Sesión 10 — Archivos":
       - Teoría: sesion-10/teoria.md
       - Ejercicios en clase: sesion-10/ejercicios.md
       - Tarea: sesion-10/tarea.md
+      - Examen: sesion-10/examen.md
+  - "Exámenes Finales":
+    - "Examen Final Teórico": examen-final/teorico.md
+    - "Examen Final Práctico (Coding)": examen-final/practico.md

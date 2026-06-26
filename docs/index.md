@@ -111,6 +111,14 @@ El curso se compone de una lección introductoria de contexto y diez sesiones pr
 
     [:octicons-arrow-right-24: Ir a la sesión](sesion-10/teoria.md)
 
+-   :material-trophy-outline:{ .lg .middle } __Exámenes Finales__
+
+    ---
+
+    Evaluación integradora: un examen final teórico y un examen práctico de programación de nivel desafiante.
+
+    [:octicons-arrow-right-24: Ir a los exámenes](examen-final/teorico.md)
+
 </div>
 
 ## Historia del Lenguaje C
