@@ -1,0 +1,840 @@
+/* ===========================================================================
+   Programación en C — Tema personalizado para Material for MkDocs
+   Autor: David Portillo
+   =========================================================================== */
+
+/* ---------------------------------------------------------------------------
+   1. PALETA DE COLOR — MODO CLARO
+   --------------------------------------------------------------------------- */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color:            #0d3b66;
+  --md-primary-fg-color--light:     #1d5a8f;
+  --md-primary-fg-color--dark:      #082742;
+  --md-primary-bg-color:            #ffffff;
+  --md-primary-bg-color--light:     #ffffffcc;
+
+  --md-accent-fg-color:             #0091c2;
+  --md-accent-fg-color--transparent:#0091c21a;
+
+  --md-typeset-a-color:             #155a96;
+
+  --md-default-bg-color:            #f7f9fc;
+
+  /* Variables propias */
+  --surface:                #ffffff;
+  --surface-2:              #f0f4f9;
+  --surface-border:         #e3e9f1;
+  --surface-shadow:         0 1px 2px rgba(13, 59, 102, .05), 0 4px 14px rgba(13, 59, 102, .06);
+  --surface-shadow-hover:   0 6px 18px rgba(13, 59, 102, .12), 0 16px 40px rgba(13, 59, 102, .10);
+  --hero-grad-1:            #0d3b66;
+  --hero-grad-2:            #1d6fa5;
+  --hero-grad-3:            #0091c2;
+  --hero-text:              #eaf4ff;
+  --callout-bg:             linear-gradient(135deg, #eef5fb 0%, #f3f8fc 100%);
+  --callout-border:         #1d6fa5;
+  --callout-icon:           #0d3b66;
+
+  /* Colores semánticos para actividades interactivas */
+  --iv-true:        #1b8a5a;
+  --iv-true-bg:     #e4f6ec;
+  --iv-false:       #c23b4b;
+  --iv-false-bg:    #fdeaec;
+  --iv-accent:      #0d3b66;
+}
+
+/* ---------------------------------------------------------------------------
+   2. PALETA DE COLOR — MODO OSCURO
+   --------------------------------------------------------------------------- */
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color:            #0b2236;
+  --md-primary-fg-color--light:     #143a57;
+  --md-primary-fg-color--dark:      #061525;
+  --md-primary-bg-color:            #e9f1f8;
+
+  --md-accent-fg-color:             #3ec1ec;
+  --md-accent-fg-color--transparent:#3ec1ec1a;
+
+  --md-typeset-a-color:             #5cb8ea;
+
+  --md-default-bg-color:            #0e1924;
+  --md-default-fg-color:            #d3dde7;
+  --md-default-fg-color--light:     #aebccb;
+  --md-code-bg-color:               #14202d;
+
+  /* Variables propias */
+  --surface:                #15212e;
+  --surface-2:              #1a2937;
+  --surface-border:         #25384a;
+  --surface-shadow:         0 1px 2px rgba(0, 0, 0, .30), 0 4px 14px rgba(0, 0, 0, .35);
+  --surface-shadow-hover:   0 6px 18px rgba(0, 0, 0, .45), 0 16px 40px rgba(0, 0, 0, .45);
+  --hero-grad-1:            #0a2b4a;
+  --hero-grad-2:            #0f4068;
+  --hero-grad-3:            #135d86;
+  --hero-text:             #dceefb;
+  --callout-bg:             linear-gradient(135deg, #16293a 0%, #14222f 100%);
+  --callout-border:         #3ec1ec;
+  --callout-icon:           #5cb8ea;
+
+  /* Colores semánticos para actividades interactivas */
+  --iv-true:        #4ade80;
+  --iv-true-bg:     #163a2b;
+  --iv-false:       #f87171;
+  --iv-false-bg:    #3a1c20;
+  --iv-accent:      #3ec1ec;
+}
+
+/* ---------------------------------------------------------------------------
+   3. TIPOGRAFÍA BASE
+   --------------------------------------------------------------------------- */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.md-typeset {
+  font-size: .76rem;
+  line-height: 1.72;
+}
+
+.md-typeset h1 {
+  font-weight: 800;
+  letter-spacing: -.02em;
+  color: var(--md-primary-fg-color);
+}
+
+[data-md-color-scheme="slate"] .md-typeset h1 {
+  color: var(--md-primary-bg-color);
+}
+
+.md-typeset h2 {
+  font-weight: 750;
+  letter-spacing: -.01em;
+  margin-top: 2.2em;
+  padding-bottom: .3em;
+  border-bottom: 2px solid var(--surface-border);
+}
+
+.md-typeset h3 {
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------------------------
+   4. ENCABEZADO Y NAVEGACIÓN
+   --------------------------------------------------------------------------- */
+.md-header {
+  box-shadow: 0 2px 12px rgba(8, 39, 66, .18);
+  backdrop-filter: saturate(140%);
+}
+
+.md-tabs {
+  background: linear-gradient(90deg, var(--md-primary-fg-color--dark), var(--md-primary-fg-color));
+}
+
+.md-tabs__link {
+  font-weight: 600;
+  opacity: .85;
+  transition: opacity .2s ease;
+}
+
+.md-tabs__link:hover,
+.md-tabs__link--active {
+  opacity: 1;
+}
+
+/* Resaltado del elemento activo en la barra lateral */
+.md-nav__link--active {
+  font-weight: 700;
+}
+
+.md-nav__item .md-nav__link--active {
+  border-left: 2px solid var(--md-accent-fg-color);
+  padding-left: .6rem;
+  margin-left: -.62rem;
+}
+
+/* ---------------------------------------------------------------------------
+   5. HERO (página de inicio)
+   --------------------------------------------------------------------------- */
+.hero {
+  position: relative;
+  margin: -1.2rem -.8rem 2.5rem;
+  padding: 4rem 2rem 4.2rem;
+  border-radius: 0 0 28px 28px;
+  background:
+    radial-gradient(900px 380px at 88% -10%, var(--hero-grad-3) 0%, transparent 55%),
+    linear-gradient(135deg, var(--hero-grad-1) 0%, var(--hero-grad-2) 100%);
+  color: var(--hero-text);
+  overflow: hidden;
+  box-shadow: var(--surface-shadow);
+}
+
+/* Patrón sutil de fondo */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, .04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, .04) 1px, transparent 1px);
+  background-size: 34px 34px;
+  mask-image: linear-gradient(180deg, rgba(0,0,0,.9), transparent 80%);
+  pointer-events: none;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero__eyebrow {
+  display: inline-block;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: .35em .9em;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .12);
+  border: 1px solid rgba(255, 255, 255, .22);
+  color: #ffffff;
+  margin-bottom: 1.1rem;
+}
+
+.md-typeset .hero h1 {
+  color: #ffffff;
+  font-size: 2.9rem;
+  line-height: 1.05;
+  margin: 0 0 .6rem;
+  font-weight: 850;
+}
+
+.hero h1 .accent {
+  background: linear-gradient(120deg, #8fe3ff, #ffffff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero__subtitle,
+.hero p {
+  font-size: .95rem;
+  line-height: 1.65;
+  max-width: 46ch;
+  color: var(--hero-text);
+  opacity: .92;
+}
+
+/* Botones dentro del hero */
+.hero .md-button {
+  margin-top: 1.4rem;
+  margin-right: .6rem;
+  border-radius: 10px;
+  font-weight: 700;
+  border-width: 2px;
+  transition: transform .15s ease, box-shadow .2s ease;
+}
+
+.hero .md-button--primary {
+  background: #ffffff;
+  color: var(--md-primary-fg-color);
+  border-color: #ffffff;
+}
+
+.hero .md-button--primary:hover {
+  background: #eaf4ff;
+  border-color: #eaf4ff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, .25);
+}
+
+.hero .md-button:not(.md-button--primary) {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, .55);
+}
+
+.hero .md-button:not(.md-button--primary):hover {
+  background: rgba(255, 255, 255, .12);
+  border-color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* ---------------------------------------------------------------------------
+   6. GRID CARDS (tarjetas del temario)
+   --------------------------------------------------------------------------- */
+.md-typeset .grid.cards > ul > li,
+.md-typeset .grid > .card {
+  border: 1px solid var(--surface-border);
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: var(--surface-shadow);
+  padding: 1.1rem 1.2rem;
+  transition: transform .18s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.md-typeset .grid.cards > ul > li:hover,
+.md-typeset .grid > .card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--surface-shadow-hover);
+  border-color: var(--md-accent-fg-color);
+}
+
+.md-typeset .grid.cards > ul > li > hr {
+  margin: .7rem 0;
+  border-color: var(--surface-border);
+}
+
+.md-typeset .grid.cards .twemoji.lg svg,
+.md-typeset .grid.cards :is(.lg) svg {
+  height: 1.8rem;
+  width: 1.8rem;
+  fill: var(--md-accent-fg-color);
+}
+
+.md-typeset .grid.cards a:not(.md-button) {
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------------------------------
+   7. BLOQUES DE CÓDIGO
+   --------------------------------------------------------------------------- */
+.md-typeset pre > code {
+  border-radius: 12px;
+}
+
+.md-typeset .highlight {
+  border-radius: 12px;
+  box-shadow: var(--surface-shadow);
+}
+
+.md-typeset .highlight > pre {
+  border-radius: 12px;
+}
+
+.highlight span.filename {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  font-weight: 600;
+}
+
+/* Código en línea: estilo "pill" */
+.md-typeset code:not(pre code) {
+  padding: .12em .42em;
+  border-radius: 6px;
+  font-size: .85em;
+  background: var(--md-code-bg-color);
+  border: 1px solid var(--surface-border);
+}
+
+/* ---------------------------------------------------------------------------
+   8. TABLAS
+   --------------------------------------------------------------------------- */
+.md-typeset table:not([class]) {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--surface-border);
+  box-shadow: var(--surface-shadow);
+  font-size: .72rem;
+}
+
+.md-typeset table:not([class]) th {
+  background: var(--md-primary-fg-color);
+  color: #ffffff;
+  font-weight: 650;
+  letter-spacing: .01em;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
+  background: var(--md-primary-fg-color--light);
+}
+
+.md-typeset table:not([class]) tr:hover {
+  background: var(--surface-2);
+}
+
+.md-typeset table:not([class]) td,
+.md-typeset table:not([class]) th {
+  border: none;
+  border-bottom: 1px solid var(--surface-border);
+}
+
+/* ---------------------------------------------------------------------------
+   9. ADMONICIONES
+   --------------------------------------------------------------------------- */
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 12px;
+  border-width: 0;
+  border-left-width: 4px;
+  box-shadow: var(--surface-shadow);
+  font-size: .74rem;
+}
+
+.md-typeset .admonition-title,
+.md-typeset summary {
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------------------------
+   10. CITAS HISTÓRICAS (blockquote) — estilo "callout"
+   --------------------------------------------------------------------------- */
+.md-typeset blockquote {
+  position: relative;
+  border: 1px solid var(--surface-border);
+  border-left: 4px solid var(--callout-border);
+  border-radius: 12px;
+  background: var(--callout-bg);
+  padding: 1rem 1.2rem 1rem 3rem;
+  color: var(--md-default-fg-color);
+  box-shadow: var(--surface-shadow);
+}
+
+.md-typeset blockquote::before {
+  content: "“";
+  position: absolute;
+  left: .7rem;
+  top: .1rem;
+  font-size: 2.6rem;
+  line-height: 1;
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--callout-icon);
+  opacity: .55;
+}
+
+.md-typeset blockquote > p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   11. BOTONES GENERALES
+   --------------------------------------------------------------------------- */
+.md-typeset .md-button {
+  border-radius: 10px;
+  font-weight: 600;
+  transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.md-typeset .md-button--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--surface-shadow-hover);
+}
+
+/* ---------------------------------------------------------------------------
+   12. PIE DE PÁGINA
+   --------------------------------------------------------------------------- */
+.md-footer-meta {
+  background: var(--md-primary-fg-color--dark);
+}
+
+/* ---------------------------------------------------------------------------
+   13. BARRA DE DESPLAZAMIENTO
+   --------------------------------------------------------------------------- */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--md-primary-fg-color--light) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--md-primary-fg-color--light);
+  border-radius: 999px;
+  border: 2px solid var(--md-default-bg-color);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--md-accent-fg-color);
+}
+
+/* ---------------------------------------------------------------------------
+   14. DETALLES VARIOS
+   --------------------------------------------------------------------------- */
+.md-typeset hr {
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.md-typeset kbd {
+  border-radius: 6px;
+  box-shadow: 0 2px 0 var(--surface-border);
+}
+
+/* Marca de selección de texto */
+::selection {
+  background: var(--md-accent-fg-color);
+  color: #ffffff;
+}
+
+/* Enlaces de la tabla de contenido al pasar el cursor */
+.md-nav__link:hover {
+  color: var(--md-accent-fg-color);
+}
+
+/* Animación suave de aparición del contenido principal */
+.md-content__inner {
+  animation: fadeInUp .35s ease both;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===========================================================================
+   15. ACTIVIDADES INTERACTIVAS
+   =========================================================================== */
+.iv-card {
+  border: 1px solid var(--surface-border);
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: var(--surface-shadow);
+  padding: 1.4rem 1.5rem;
+  margin: 1.6rem 0;
+}
+
+.iv-card__title {
+  font-size: 1rem;
+  font-weight: 750;
+  color: var(--md-primary-fg-color);
+  margin-bottom: .4rem;
+}
+
+[data-md-color-scheme="slate"] .iv-card__title {
+  color: var(--md-primary-bg-color);
+}
+
+.iv-card__lead {
+  font-size: .78rem;
+  margin: 0 0 1rem;
+  color: var(--md-default-fg-color--light);
+}
+
+.iv-card__note {
+  font-size: .74rem;
+  margin: .9rem 0 0;
+  padding: .6rem .8rem;
+  border-radius: 8px;
+  background: var(--surface-2);
+  color: var(--md-default-fg-color--light);
+}
+
+.iv-card code {
+  font-family: var(--md-code-font-family, monospace);
+}
+
+.iv-row {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.iv-row--center { justify-content: center; }
+
+/* Deslizador */
+.iv-range {
+  flex: 1 1 220px;
+  accent-color: var(--md-accent-fg-color);
+  height: 6px;
+}
+
+.iv-value-badge {
+  font-family: var(--md-code-font-family, monospace);
+  font-weight: 700;
+  font-size: .85rem;
+  padding: .25em .7em;
+  border-radius: 8px;
+  background: var(--md-accent-fg-color--transparent);
+  color: var(--md-accent-fg-color);
+  min-width: 4.5rem;
+  text-align: center;
+}
+
+/* Bloque de código del widget */
+.iv-code {
+  font-family: var(--md-code-font-family, monospace);
+  font-size: .8rem;
+  line-height: 1.6;
+  background: var(--md-code-bg-color);
+  border: 1px solid var(--surface-border);
+  border-radius: 10px;
+  padding: .8rem 1rem;
+  margin: .4rem 0 1rem;
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+
+.iv-kw  { color: var(--md-accent-fg-color); font-weight: 700; }
+.iv-cmt { color: #8a96a3; font-style: italic; }
+.iv-eq  { opacity: .8; font-weight: 500; }
+
+/* Resultado grande */
+.iv-result {
+  font-size: .9rem;
+  font-weight: 600;
+  padding: .8rem 1rem;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+
+.iv-result--true {
+  background: var(--iv-true-bg);
+  color: var(--iv-true);
+  border-color: var(--iv-true);
+}
+
+.iv-result--false {
+  background: var(--iv-false-bg);
+  color: var(--iv-false);
+  border-color: var(--iv-false);
+}
+
+/* Entradas numéricas */
+.iv-num {
+  width: 5rem;
+  font-family: var(--md-code-font-family, monospace);
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  padding: .4em .3em;
+  border: 2px solid var(--surface-border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--md-default-fg-color);
+}
+
+.iv-num:focus {
+  outline: none;
+  border-color: var(--md-accent-fg-color);
+}
+
+/* Botones de operador */
+.iv-ops { display: flex; gap: .3rem; flex-wrap: wrap; justify-content: center; }
+
+.iv-op-btn {
+  font-family: var(--md-code-font-family, monospace);
+  font-weight: 700;
+  font-size: .9rem;
+  min-width: 2.6rem;
+  padding: .4em .2em;
+  border: 1px solid var(--surface-border);
+  border-radius: 8px;
+  background: var(--surface-2);
+  color: var(--md-default-fg-color);
+  cursor: pointer;
+  transition: all .15s ease;
+}
+
+.iv-op-btn:hover { border-color: var(--md-accent-fg-color); }
+
+.iv-op-btn.is-active {
+  background: var(--md-primary-fg-color);
+  color: #fff;
+  border-color: var(--md-primary-fg-color);
+}
+
+[data-md-color-scheme="slate"] .iv-op-btn.is-active {
+  background: var(--md-accent-fg-color);
+  border-color: var(--md-accent-fg-color);
+  color: #06222f;
+}
+
+/* Interruptores A / B */
+.iv-toggles { gap: 2.2rem; }
+
+.iv-toggle { display: flex; flex-direction: column; align-items: center; gap: .4rem; }
+
+.iv-toggle__label {
+  font-family: var(--md-code-font-family, monospace);
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.iv-toggle__btn {
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 14px;
+  border: 2px solid transparent;
+  font-family: var(--md-code-font-family, monospace);
+  font-size: 1.5rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform .12s ease, background .2s ease;
+}
+
+.iv-toggle__btn:hover { transform: translateY(-2px); }
+
+.iv-toggle__btn.is-true  { background: var(--iv-true-bg);  color: var(--iv-true);  border-color: var(--iv-true); }
+.iv-toggle__btn.is-false { background: var(--iv-false-bg); color: var(--iv-false); border-color: var(--iv-false); }
+
+/* Chips de resultado en vivo */
+.iv-live {
+  display: flex;
+  gap: .9rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: .4rem 0 1.2rem;
+}
+
+.iv-live__item {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .35rem .7rem;
+  border-radius: 10px;
+  background: var(--surface-2);
+  border: 1px solid var(--surface-border);
+}
+
+.iv-live__label {
+  font-family: var(--md-code-font-family, monospace);
+  font-weight: 700;
+  font-size: .82rem;
+}
+
+.iv-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 6px;
+  font-family: var(--md-code-font-family, monospace);
+  font-weight: 800;
+  font-size: .85rem;
+}
+
+.iv-chip--true  { background: var(--iv-true);  color: #fff; }
+.iv-chip--false { background: var(--iv-false); color: #fff; }
+
+/* Tabla de verdad interactiva */
+.iv-truth {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-family: var(--md-code-font-family, monospace);
+  font-size: .82rem;
+  border: 1px solid var(--surface-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.iv-truth th {
+  background: var(--md-primary-fg-color);
+  color: #fff;
+  padding: .55rem;
+  font-weight: 650;
+}
+
+[data-md-color-scheme="slate"] .iv-truth th {
+  background: var(--md-primary-fg-color--light);
+}
+
+.iv-truth td {
+  text-align: center;
+  padding: .5rem;
+  border-bottom: 1px solid var(--surface-border);
+  font-weight: 700;
+}
+
+.iv-truth tbody tr:last-child td { border-bottom: none; }
+
+.iv-truth tr.is-current {
+  outline: 2px solid var(--md-accent-fg-color);
+  outline-offset: -2px;
+}
+
+.iv-truth tr.is-current td { background: var(--md-accent-fg-color--transparent); }
+
+.iv-td-true  { color: var(--iv-true); }
+.iv-td-false { color: var(--iv-false); }
+
+/* Quiz */
+.iv-quiz__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: .6rem;
+}
+
+.iv-quiz__progress {
+  font-size: .72rem;
+  font-weight: 600;
+  color: var(--md-default-fg-color--light);
+}
+
+.iv-quiz__expr {
+  font-size: .95rem;
+  text-align: center;
+}
+
+.iv-quiz__opts {
+  display: flex;
+  gap: .8rem;
+  flex-wrap: wrap;
+}
+
+.iv-quiz__opt {
+  flex: 1 1 140px;
+  padding: .8rem;
+  border: 2px solid var(--surface-border);
+  border-radius: 12px;
+  background: var(--surface-2);
+  color: var(--md-default-fg-color);
+  font-size: .95rem;
+  cursor: pointer;
+  transition: all .15s ease;
+}
+
+.iv-quiz__opt span { opacity: .7; font-size: .8rem; }
+.iv-quiz__opt:hover:not(.is-locked) { border-color: var(--md-accent-fg-color); transform: translateY(-2px); }
+.iv-quiz__opt.is-locked { cursor: default; }
+.iv-quiz__opt.is-correct { background: var(--iv-true-bg); border-color: var(--iv-true); color: var(--iv-true); }
+.iv-quiz__opt.is-wrong   { background: var(--iv-false-bg); border-color: var(--iv-false); color: var(--iv-false); }
+
+.iv-quiz__feedback {
+  margin-top: 1rem;
+  font-size: .78rem;
+  padding: 0 .2rem;
+  min-height: 1.2rem;
+}
+
+.iv-quiz__feedback.is-correct { color: var(--iv-true); }
+.iv-quiz__feedback.is-wrong   { color: var(--iv-false); }
+
+.iv-quiz__nav { margin-top: 1rem; text-align: right; min-height: 2rem; }
+
+.iv-btn {
+  font-weight: 650;
+  font-size: .8rem;
+  padding: .5em 1.1em;
+  border: none;
+  border-radius: 9px;
+  background: var(--md-primary-fg-color);
+  color: #fff;
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .2s ease;
+}
+
+[data-md-color-scheme="slate"] .iv-btn {
+  background: var(--md-accent-fg-color);
+  color: #06222f;
+}
+
+.iv-btn:hover { transform: translateY(-2px); box-shadow: var(--surface-shadow-hover); }
+
+.iv-quiz__summary { text-align: center; padding: 1rem 0; }
+
+.iv-quiz__score {
+  font-size: 2.4rem;
+  font-weight: 850;
+  color: var(--md-accent-fg-color);
+  line-height: 1.1;
+}
+
+.iv-quiz__summary p { font-size: .85rem; margin: .4rem 0 1rem; }
